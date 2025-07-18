@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>yuviejuvie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: #000;
+        }
+
+        *:focus {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        input,
+        button,
+        img {
+            outline: none !important;
+            border: none;
+        }
+
+        .background {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.6;
+            animation: blobMove 20s infinite ease-in-out;
+        }
+
+        .blob1 {
+            width: 400px;
+            height: 400px;
+            background: #3b82f6;
+            top: -10%;
+            left: -10%;
+            animation-delay: 0s;
+        }
+
+        .blob2 {
+            width: 500px;
+            height: 500px;
+            background: #60a5fa;
+            bottom: -15%;
+            right: -10%;
+            animation-delay: 5s;
+        }
+
+        .blob3 {
+            width: 300px;
+            height: 300px;
+            background: #1e40af;
+            top: 40%;
+            left: 50%;
+            animation-delay: 10s;
+        }
+
+        @keyframes blobMove {
+
+            0%,
+            100% {
+                transform: translate(0px, 0px) scale(1);
+            }
+
+            50% {
+                transform: translate(100px, -50px) scale(1.2);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-black min-h-screen relative">
+
+    <!-- Animated blurred gradient background -->
+    <div class="background">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+    </div>
+
+    <!-- Main content -->
+    <div class="flex justify-center px-4 py-10">
+        <div class="w-full max-w-md bg-black/70 backdrop-blur-md p-6 rounded-3xl shadow-2xl border border-neutral-800">
+            <h1 class="text-white text-center text-3xl font-semibold mb-8">yuviejuvie</h1>
+
+            <div class="flex flex-col items-center gap-4">
+                <input id="image" type="file" accept="image/*" class="hidden" />
+                <label for="image"
+                    class="cursor-pointer w-full text-center px-6 py-3 bg-[#3b82f6] text-white rounded-full text-base font-medium transition hover:bg-[#60a5fa]">
+                    Choose Image
+                </label>
+
+                <button id="submit"
+                    class="w-full px-6 py-3 bg-white text-black font-semibold rounded-full text-base hover:bg-gray-200 transition">
+                    Analyze
+                </button>
+            </div>
+
+            <div id="preview" class="mt-6 hidden flex justify-center">
+                <img id="preview-img" class="rounded-xl max-h-48 object-contain" />
+            </div>
+
+            <div id="spinner" class="mt-6 hidden flex justify-center">
+                <div class="w-6 h-6 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+            </div>
+
+            <div id="output" class="hidden mt-8 space-y-4 text-white text-center"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
